@@ -1,0 +1,15 @@
+.widgetDiv {
+	@apply absolute bottom-4 right-4;
+}
+.widgetButton {
+	@apply bg-brand-500 rounded-full px-3 h-12;
+	@apply flex items-center;
+	@apply text-white;
+}
+.chatIcon {
+	@apply w-6 h-6;
+}
+.widgetText {
+	@apply max-w-0 overflow-hidden;
+	@apply group-hover:max-w-xs transition-all duration-500 ease-linear;
+}

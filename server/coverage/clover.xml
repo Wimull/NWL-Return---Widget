@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651684069611" clover="3.2.0">
-  <project timestamp="1651684069611" name="All files">
+<coverage generated="1651759079009" clover="3.2.0">
+  <project timestamp="1651759079010" name="All files">
     <metrics statements="41" coveredstatements="41" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2" elements="55" coveredelements="55" complexity="0" loc="41" ncloc="41" packages="1" files="1" classes="1"/>
     <file name="submitFeedbackUseCase.ts" path="C:\Users\Usuario\Documents\Projetos\NWL Return - Widget\server\src\useCases\submitFeedbackUseCase.ts">
       <metrics statements="41" coveredstatements="41" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2"/>

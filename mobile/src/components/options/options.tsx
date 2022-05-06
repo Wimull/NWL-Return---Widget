@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
-import { Copyright, Option } from "..";
+import { Copyright } from "../copyright";
+import { Option } from "../option/";
 import { styles } from "./styles";
 import { feedbackTypes } from "../../utils/feedbackTypes";
 

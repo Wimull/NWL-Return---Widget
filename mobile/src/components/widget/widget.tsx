@@ -6,7 +6,7 @@ import BottomSheet from "@gorhom/bottom-sheet/";
 import { theme } from "../../theme";
 import { styles } from "./styles";
 
-export function WidgetComponent() {
+export const Widget: any = gestureHandlerRootHOC(() => {
 	const bottomSheetRef = useRef<BottomSheet>(null);
 
 	function handleOpen() {
@@ -32,5 +32,4 @@ export function WidgetComponent() {
 			</BottomSheet>
 		</>
 	);
-}
-export const Widget: any = gestureHandlerRootHOC(WidgetComponent);
+});

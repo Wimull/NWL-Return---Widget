@@ -5,6 +5,7 @@ import { ChatTeardropDots } from "phosphor-react-native";
 import BottomSheet from "@gorhom/bottom-sheet/";
 import { theme } from "../../theme";
 import { styles } from "./styles";
+import { Options } from "../options";
 
 export const Widget: any = gestureHandlerRootHOC(() => {
 	const bottomSheetRef = useRef<BottomSheet>(null);
@@ -28,7 +29,7 @@ export const Widget: any = gestureHandlerRootHOC(() => {
 				backgroundStyle={styles.modal}
 				handleIndicatorStyle={styles.indicator}
 			>
-				<Text>Hello World</Text>
+				<Options />
 			</BottomSheet>
 		</>
 	);

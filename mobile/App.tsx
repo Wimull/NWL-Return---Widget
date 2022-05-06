@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { Widget } from "./src/components/widget";
+import { Widget } from "./src/components";
 import { theme } from "./src/theme";
 import AppLoading from "expo-app-loading";
 import {

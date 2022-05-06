@@ -16,6 +16,7 @@ import { Button } from "../button";
 import { feedbackTypes } from "../../utils/feedbackTypes";
 import { captureScreen } from "react-native-view-shot";
 import { api } from "../../libs/api";
+import * as FileSystem from "expo-file-system";
 
 interface FormProps extends TouchableOpacityProps {
 	feedbackType: FeedbackType;
@@ -50,11 +51,15 @@ export function Form({
 
 	async function handleSendFeedback() {
 		if (loading) return;
+		const screenshotBase64 =
+			screenshot &&
+			FileSystem.readAsStringAsync(screenshot, { encoding: "base64" });
 		setLoading(true);
+
 		try {
 			await api.post("feedbacks", {
 				type: feedbackType,
-				screenshot,
+				screenshot: `data:image/png;base64, ${screenshotBase64}`,
 				comment,
 			});
 			setLoading(false);
@@ -86,6 +91,14 @@ export function Form({
 					<Text style={styles.titleText}>{title}</Text>
 				</View>
 			</View>
+			<TextInput
+				multiline={true}
+				style={styles.input}
+				autoCorrect={false}
+				placeholder={"Deixe o seu feedback..."}
+				placeholderTextColor={theme.colors.text_secondary}
+				onChangeText={setComment}
+			/>
 
 			<View style={styles.footer}>
 				<ScreenshotButton
@@ -98,4 +111,3 @@ export function Form({
 		</View>
 	);
 }
-//<TextArea multiline={true} style={styles.input} autoCorrect={false} placeholder={"Deixe o seu feedback..."} placeholderTextColor={theme.colors.text_secondary} onChangeText={setComment}

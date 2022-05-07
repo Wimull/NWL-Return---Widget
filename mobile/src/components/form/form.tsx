@@ -30,7 +30,7 @@ export function Form({
 	onFeedbackSent,
 	...rest
 }: FormProps) {
-	const { title, image } = feedbackTypes[feedbackType];
+	const { title, image, placeholder } = feedbackTypes[feedbackType];
 
 	const [screenshot, setScreenshot] = useState<string | null>(null);
 	const [loading, setLoading] = useState<boolean>(false);
@@ -95,7 +95,7 @@ export function Form({
 				multiline={true}
 				style={styles.input}
 				autoCorrect={false}
-				placeholder={"Deixe o seu feedback..."}
+				placeholder={placeholder}
 				placeholderTextColor={theme.colors.text_secondary}
 				onChangeText={setComment}
 			/>

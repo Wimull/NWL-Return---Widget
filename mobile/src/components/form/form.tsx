@@ -57,10 +57,11 @@ export function Form({
 		setLoading(true);
 
 		try {
-			await api.post("feedbacks", {
+			console.log(feedbackType, comment, screenshotBase64);
+			await api.post("/feedbacks", {
 				type: feedbackType,
-				screenshot: `data:image/png;base64, ${screenshotBase64}`,
 				comment,
+				screenshot: `data:image/png;base64, ${screenshotBase64}`,
 			});
 			setLoading(false);
 			onFeedbackSent(true);
@@ -106,7 +107,11 @@ export function Form({
 					onRemoveShot={handleScreenshotRemove}
 					screenshot={screenshot}
 				/>
-				<Button onPress={handleSendFeedback} isLoading={loading} />
+				<Button
+					onPress={handleSendFeedback}
+					isLoading={loading}
+					disabled={!comment}
+				/>
 			</View>
 		</View>
 	);

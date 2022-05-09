@@ -15,8 +15,8 @@ export function Success({ onFeedbackReset }: SuccessProps) {
 			<Text style={styles.title}>Agradecemos pelo feedback</Text>
 			<TouchableOpacity style={styles.button} onPress={onFeedbackReset}>
 				<Text style={styles.buttonTitle}>Quero enviar outro</Text>
-				<Copyright />
 			</TouchableOpacity>
+			<Copyright />
 		</View>
 	);
 }

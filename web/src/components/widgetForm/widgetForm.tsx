@@ -47,7 +47,7 @@ export function WidgetForm() {
 	}
 
 	return (
-		<div className="bg-surface-primary p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto ">
+		<div className="bg-surface-primary-100 dark:bg-surface-primary-500 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto ">
 			{!feedbackType ? (
 				<FeedbackTypeStep onFeedbackTypeChange={setFeedbackType} />
 			) : !feedbackSent ? (

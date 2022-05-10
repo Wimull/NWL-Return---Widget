@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-	@apply bg-[#09090a] text-text-primary;
+	@apply bg-[#09090a];
 }

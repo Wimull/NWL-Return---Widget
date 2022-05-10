@@ -40,12 +40,12 @@ export function FeedbackContentStep({
 				<button
 					onClick={resetFeedback}
 					title="Voltar"
-					className="w-4 h-4 top-5 left-5 absolute text-text-secondary hover:text-text-primary"
+					className="w-4 h-4 top-5 left-5 absolute text-text-secondary-100 hover:text-text-primary-100 dark:text-text-secondary-500 dark:hover:text-text-primary-500"
 				>
 					<ArrowLeft weight="bold" />
 				</button>
 				<ClosingButton />
-				<span className="text-xl text-text-primary leading-6 px-4 flex gap-1 items-center">
+				<span className="text-xl text-text-primary-100 dark:text-text-primary-500 leading-6 px-4 flex gap-1 items-center">
 					<img
 						src={selectedFeedbackType.image.source}
 						alt={selectedFeedbackType.image.alt}
@@ -56,7 +56,7 @@ export function FeedbackContentStep({
 			</header>
 			<form className="my-4 w-full" onSubmit={handleSubmitFeedback}>
 				<textarea
-					className="min-w-[304px] w-full min-h-[112px] text-sm placeholder-text-secondary text-text-primary border-[1px] rounded-md border-stroke bg-transparent focus:border-brand-500 focus:outline-none focus:ring-brand-500 focus:ring-1 resize-none scrollbar-thumb-stroke scrollbar-track-transparent scrollbar-thin"
+					className="min-w-[304px] w-full min-h-[112px] text-sm placeholder-text-secondary-100 dark:text-text-primary-500 dark:placeholder-text-secondary-500 text-text-primary-100 border-[1px] rounded-md border-stroke-100 dark:border-stroke-500 bg-transparent focus:border-brand-500 focus:outline-none focus:ring-brand-500 focus:ring-1 resize-none scrollbar-thumb-stroke scrollbar-track-transparent scrollbar-thin"
 					placeholder={selectedFeedbackType.placeholder}
 					onChange={(event) => setComment(event.target.value)}
 				/>
@@ -68,7 +68,7 @@ export function FeedbackContentStep({
 					/>
 					<button
 						type="submit"
-						className="p-2 bg-brand-500 rounded-[4px] border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-primary focus:ring-brand-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500"
+						className="p-2 bg-brand-500 text-text-primary-500 rounded-[4px] border-transparent flex-1 flex justify-center items-center text-sm hover:bg-brand-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-primary focus:ring-brand-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500"
 						disabled={comment.length === 0 || isSendingFeedback}
 					>
 						{isSendingFeedback ? <Loading /> : "Enviar feedback"}

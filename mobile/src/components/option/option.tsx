@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
 	View,
 	TouchableOpacity,
@@ -7,6 +7,7 @@ import {
 	ImageProps,
 	Text,
 } from "react-native";
+import { ThemeContext } from "../themeContext";
 import { FeedbackType } from "../widget";
 
 import { styles } from "./styles";
@@ -25,14 +26,15 @@ export function Option({
 	onTypeChange,
 	...rest
 }: OptionProps) {
+	const theme = useContext(ThemeContext);
 	return (
 		<TouchableOpacity
-			style={styles.container}
+			style={styles(theme).container}
 			{...rest}
 			onPress={() => onTypeChange(type)}
 		>
-			<Image source={image} style={styles.image} />
-			<Text style={styles.title}>{title}</Text>
+			<Image source={image} style={styles(theme).image} />
+			<Text style={styles(theme).title}>{title}</Text>
 		</TouchableOpacity>
 	);
 }

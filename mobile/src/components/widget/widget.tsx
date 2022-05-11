@@ -1,18 +1,20 @@
 import { gestureHandlerRootHOC } from "react-native-gesture-handler";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { ChatTeardropDots } from "phosphor-react-native";
 import BottomSheet from "@gorhom/bottom-sheet/";
-import { theme } from "../../theme";
+
 import { styles } from "./styles";
 import { Form } from "../form";
 import { Options } from "../options";
 import { feedbackTypes } from "../../utils/feedbackTypes";
 import { Success } from "../success";
+import { ThemeContext } from "../themeContext";
 
 export type FeedbackType = keyof typeof feedbackTypes;
 
 export const Widget: any = gestureHandlerRootHOC(() => {
+	const theme = useContext(ThemeContext);
 	const bottomSheetRef = useRef<BottomSheet>(null);
 
 	function handleOpen() {
@@ -29,7 +31,10 @@ export const Widget: any = gestureHandlerRootHOC(() => {
 
 	return (
 		<>
-			<TouchableOpacity style={styles.button} onPress={handleOpen}>
+			<TouchableOpacity
+				style={styles(useContext(ThemeContext)).button}
+				onPress={handleOpen}
+			>
 				<ChatTeardropDots
 					size={24}
 					weight="bold"
@@ -39,8 +44,8 @@ export const Widget: any = gestureHandlerRootHOC(() => {
 			<BottomSheet
 				ref={bottomSheetRef}
 				snapPoints={[1, 280]}
-				backgroundStyle={styles.modal}
-				handleIndicatorStyle={styles.indicator}
+				backgroundStyle={styles(useContext(ThemeContext)).modal}
+				handleIndicatorStyle={styles(useContext(ThemeContext)).indicator}
 			>
 				{feedbackSent ? (
 					<Success onFeedbackReset={handleFeedbackReset} />

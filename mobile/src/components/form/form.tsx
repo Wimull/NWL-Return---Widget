@@ -1,5 +1,5 @@
 import { ArrowLeft } from "phosphor-react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
 	View,
 	TextInput,
@@ -8,7 +8,6 @@ import {
 	TouchableOpacity,
 	TouchableOpacityProps,
 } from "react-native";
-import { theme } from "../../theme";
 import { styles } from "./styles";
 import { FeedbackType } from "../widget";
 import { ScreenshotButton } from "../screenshotButton";
@@ -17,6 +16,7 @@ import { feedbackTypes } from "../../utils/feedbackTypes";
 import { captureScreen } from "react-native-view-shot";
 import { api } from "../../libs/api";
 import * as FileSystem from "expo-file-system";
+import { ThemeContext } from "../themeContext";
 
 interface FormProps extends TouchableOpacityProps {
 	feedbackType: FeedbackType;
@@ -30,6 +30,7 @@ export function Form({
 	onFeedbackSent,
 	...rest
 }: FormProps) {
+	const theme = useContext(ThemeContext);
 	const { title, image, placeholder } = feedbackTypes[feedbackType];
 
 	const [screenshot, setScreenshot] = useState<string | null>(null);
@@ -72,8 +73,8 @@ export function Form({
 	}
 
 	return (
-		<View style={styles.container}>
-			<View style={styles.header}>
+		<View style={styles(theme).container}>
+			<View style={styles(theme).header}>
 				<TouchableOpacity
 					onPress={() => {
 						onFeedbackReset();
@@ -87,21 +88,21 @@ export function Form({
 					/>
 				</TouchableOpacity>
 
-				<View style={styles.titleContainer}>
-					<Image source={image} style={styles.titleImage} />
-					<Text style={styles.titleText}>{title}</Text>
+				<View style={styles(theme).titleContainer}>
+					<Image source={image} style={styles(theme).titleImage} />
+					<Text style={styles(theme).titleText}>{title}</Text>
 				</View>
 			</View>
 			<TextInput
 				multiline={true}
-				style={styles.input}
+				style={styles(theme).input}
 				autoCorrect={false}
 				placeholder={placeholder}
 				placeholderTextColor={theme.colors.text_secondary}
 				onChangeText={setComment}
 			/>
 
-			<View style={styles.footer}>
+			<View style={styles(theme).footer}>
 				<ScreenshotButton
 					onTakeShot={handleScreenshot}
 					onRemoveShot={handleScreenshotRemove}

@@ -4,16 +4,19 @@ import { Option } from "../option/";
 import { styles } from "./styles";
 import { feedbackTypes } from "../../utils/feedbackTypes";
 import { FeedbackType } from "../widget";
+import { useContext } from "react";
+import { ThemeContext } from "../themeContext";
 
 interface OptionsProps {
 	onFeedbackType: (type: FeedbackType) => void;
 }
 
 export function Options({ onFeedbackType }: OptionsProps) {
+	const theme = useContext(ThemeContext);
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Deixe seu Feedback</Text>
-			<View style={styles.options}>
+		<View style={styles(theme).container}>
+			<Text style={styles(theme).title}>Deixe seu Feedback</Text>
+			<View style={styles(theme).options}>
 				{Object.entries(feedbackTypes).map(([key, feedback]) => (
 					<Option
 						key={key}

@@ -9,11 +9,11 @@ export function FeedbackTypeStep({
 }: FeedbackTypeStepProps) {
 	return (
 		<>
-			<header>
-				<ClosingButton />
-				<span className="text-xl text-text-primary leading-6 px-4">
+			<header className="flex align-middle max-w-full items-center">
+				<span className="w-full text-xl text-text-primary-100 dark:text-text-primary-500 leading-6 px-4 text-center ">
 					Deixe seu Feedback
 				</span>
+				<ClosingButton />
 			</header>
 			<div className="flex py-8 gap-2 w-full">
 				{Object.entries(feedbackTypes).map(([key, value]) => {

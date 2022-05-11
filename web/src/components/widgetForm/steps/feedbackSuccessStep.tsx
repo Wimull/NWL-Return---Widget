@@ -33,7 +33,7 @@ export function FeedbackSuccessStep({
 
 				<button
 					className="py-2 px-6 mt-6 bg-surface-secondary-100 dark:bg-surface-secondary-500 rounded-[4px] border-transparent text-sm leading-6 hover:bg-surface-secondary-hover-100 dark:hover:bg-surface-secondary-hover-500 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-primary-100 dark:focus:ring-offset-surface-primary-500 focus:ring-brand-500"
-					onClick={resetFeedback}
+					onClick={() => resetFeedback()}
 				>
 					Quero enviar outro
 				</button>

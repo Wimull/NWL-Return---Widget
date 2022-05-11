@@ -17,7 +17,7 @@ export function ScreenshotButton({
 		setIsTakingScreenshot(true);
 		const canvas = await html2canvas(document.querySelector("html")!);
 		const base64Image = canvas.toDataURL("image/png");
-		console.log(base64Image);
+
 		onScreenshotTook(base64Image);
 		setIsTakingScreenshot(false);
 	}
@@ -26,7 +26,7 @@ export function ScreenshotButton({
 		return (
 			<button
 				type="button"
-				className="p-1 w-10 h-10 rounded-md border-transparent flex justify-end items-end text-text-secondary hover:text-text-primary transition-colors"
+				className="p-1 w-10 h-10 rounded-md border-transparent flex justify-end items-end text-text-secondary-100 dark:text-text-secondary-500 dark:hover:text-text-primary-500 hover:text-text-primary-100 transition-colors"
 				style={{
 					backgroundImage: `url(${screenshot})`,
 					backgroundPosition: "right bottom",

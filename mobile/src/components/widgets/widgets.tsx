@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Widget } from "../widget/widget";
+import { Widget } from "../widget";
 import { DarkMode } from "../darkMode";
 
 interface WidgetsProps {

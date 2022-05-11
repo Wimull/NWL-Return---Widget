@@ -34,16 +34,19 @@ export function Form({
 	const { title, image, placeholder } = feedbackTypes[feedbackType];
 
 	const [screenshot, setScreenshot] = useState<string | null>(null);
-	const [loading, setLoading] = useState<boolean>(false);
+	const [loadingScreenshot, setLoadingScreenshot] = useState(false);
+	const [sendingFeedback, setSendingFeedback] = useState<boolean>(false);
 	const [comment, setComment] = useState("");
 
-	function handleScreenshot() {
-		captureScreen({
+	async function handleScreenshot() {
+		setLoadingScreenshot(true);
+		await captureScreen({
 			format: "png",
 			quality: 0.8,
 		})
 			.then((uri) => setScreenshot(uri))
 			.catch((error) => console.log(error));
+		setLoadingScreenshot(false);
 	}
 
 	function handleScreenshotRemove() {
@@ -51,11 +54,11 @@ export function Form({
 	}
 
 	async function handleSendFeedback() {
-		if (loading) return;
+		if (sendingFeedback) return;
 		const screenshotBase64 =
 			screenshot &&
 			FileSystem.readAsStringAsync(screenshot, { encoding: "base64" });
-		setLoading(true);
+		setSendingFeedback(true);
 
 		try {
 			console.log(feedbackType, comment, screenshotBase64);
@@ -64,11 +67,11 @@ export function Form({
 				comment,
 				screenshot: `data:image/png;base64, ${screenshotBase64}`,
 			});
-			setLoading(false);
+			setSendingFeedback(false);
 			onFeedbackSent(true);
 		} catch (error) {
 			console.error(error);
-			setLoading(false);
+			setSendingFeedback(false);
 		}
 	}
 
@@ -107,10 +110,11 @@ export function Form({
 					onTakeShot={handleScreenshot}
 					onRemoveShot={handleScreenshotRemove}
 					screenshot={screenshot}
+					isTakingScreenshot={loadingScreenshot}
 				/>
 				<Button
 					onPress={handleSendFeedback}
-					isLoading={loading}
+					isLoading={sendingFeedback}
 					disabled={!comment}
 				/>
 			</View>
